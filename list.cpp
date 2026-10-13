@@ -67,14 +67,19 @@ address findElm(List L, infotype x) {
     * FS : returns element with info.ID = x.ID,
            return Null if such ID is not found
     */
-
-    address P;
+    
+    address P = L.first;
     //-------------your code here-------------
-    cout<<"your code here"<<endl;
+    while (P != NULL){
+        if (P->info.ID == x.ID){
+            return P;
+        }
+        P = P->next;
+    }
 
 
     //----------------------------------------
-    return P;
+    return NULL;
 }
 
 void deleteFirst(List &L, address &P) {
@@ -96,7 +101,19 @@ void deleteLast(List &L, address &P) {
     * FS : last element in List L is removed and is pointed by P
     */
     //-------------your code here-------------
-    cout<<"your code here"<<endl;
+    if (L.first == NULL){
+        P = NULL
+    }else if (L.first->next == NULL){
+        deleteFirst(L, P);
+    }else{
+        address Q = L.first;
+        while (Q->next->next != NULL){
+            Q = Q->next;
+        }
+        P = Q->next;
+        Q->next=NULL;
+        
+    }
 
 
 
@@ -144,8 +161,13 @@ void deleteAfter(List &L, address Prec, address &P) {
     *      is removed and pointed by pointer P
     */
     //-------------your code here-------------
-    cout<<"your code here"<<endl;
-
+    if (Prec  !=NULL && Prec->next !=NULL){
+        P = Prec->next;
+        Prec->next = P->next;
+        P->next = NULL;
+    }else{
+        P = NULL;
+    }
 
     //----------------------------------------
 }
