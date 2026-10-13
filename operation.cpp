@@ -20,7 +20,7 @@ void insert_sorted(List &L, infotype x) {
     q = L.first;
     prev = nullptr;
     found = false;
-
+    address p = allocate(x);
 
     while (q != nullptr && !found) {
         if (q->info < p->info) {
@@ -31,9 +31,10 @@ void insert_sorted(List &L, infotype x) {
         }
     }
 
-    p = new elmList;
-    p->info = x;
-    p->next = nullptr;
+    if (q != NULL && q->info == p->info) {
+        return;
+    }
+
     if (prev == nullptr) {
         p->next = L.first;
         L.first = p;
@@ -41,7 +42,7 @@ void insert_sorted(List &L, infotype x) {
         p->next = q;
         prev->next = p;
     }
-}
+
 
 
     //----------------------------------------
