@@ -109,11 +109,19 @@ void printInfo(List L) {
     *      call the view_data function from my_data.h to print the info
     */
     //-------------your code here-------------
-    cout<<"your code here"<<endl;
+    address p = L.first;
 
+    while (p != nullptr) {
+        std::cout << p->info;
 
-    //----------------------------------------
-    cout<<endl;
+        if (p->next != nullptr) {
+            std::cout << ", ";
+        }
+
+        p = p->next;
+    }
+
+    std::cout << std::endl;
 }
 
 

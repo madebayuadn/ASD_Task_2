@@ -13,7 +13,35 @@ void insert_sorted(List &L, infotype x) {
     */
 
     //-------------your code here-------------
-    cout<<"your code here"<<endl;
+
+    address q, prev;
+    bool found;
+
+    q = L.first;
+    prev = nullptr;
+    found = false;
+
+
+    while (q != nullptr && !found) {
+        if (q->info < p->info) {
+            prev = q;
+            q = q->next;
+        } else {
+            found = true;
+        }
+    }
+
+    p = new elmList;
+    p->info = x;
+    p->next = nullptr;
+    if (prev == nullptr) {
+        p->next = L.first;
+        L.first = p;
+    } else {
+        p->next = q;
+        prev->next = p;
+    }
+}
 
 
     //----------------------------------------
